@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LogingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,5 @@ Route::get('/dashboard', function () {
 })
     ->name('dashboard')
     ->middleware('auth');
+
+Route::post('login',[LogingController::class,'check'])->name('login.check');
