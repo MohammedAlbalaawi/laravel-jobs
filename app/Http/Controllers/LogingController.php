@@ -18,7 +18,10 @@ class LogingController extends Controller
 
     public function check(LoginRequest $request)
     {
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+        if (Auth::attempt(
+            ['email' => $request->email, 'password' => $request->password],
+            $request->has('remember') ? true : false))
+        {
             return redirect()->route('dashboard');
         }
         return redirect()->route('login.index');
