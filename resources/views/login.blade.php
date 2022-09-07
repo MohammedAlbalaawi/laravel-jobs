@@ -30,7 +30,7 @@
                 <span class="text-red">{{ $message }}</span>
                 @enderror
                 <div class="input-group mb-3">
-                    <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email">
+                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
@@ -42,7 +42,7 @@
                 <span class="text-red">{{ $message }}</span>
                 @enderror
                 <div class="input-group mb-3">
-                    <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
+                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -53,7 +53,7 @@
                 <div class="row">
                     <div class="col-8">
                         <div class="check-primary">
-                            <input type="checkbox" id="remember">
+                            <input type="checkbox" name="remember">
                             <span>
                                 Remember Me
                             </span>

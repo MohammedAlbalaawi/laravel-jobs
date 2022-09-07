@@ -15,15 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', function () {
-    return view('login');
-})
-->name('login');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})
-    ->name('dashboard')
+})  ->name('dashboard')
     ->middleware('auth');
 
-Route::post('login',[LogingController::class,'check'])->name('login.check');
+Route::controller(LogingController::class)->group(function () {
+    Route::get('/','index')->name('login.index');
+    Route::post('check','check')->name('login.check');
+    Route::get('logout','logout')->name('login.logout');
+});
+
