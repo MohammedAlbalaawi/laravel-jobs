@@ -39,7 +39,7 @@ class PermissionsSeeder extends Seeder
             'name' => 'admin',
         ]);
         $role->givePermissionTo(Permission::all());
-        
+
         // Create User
         $user = User::firstOrCreate([
             'name' => 'admin',
