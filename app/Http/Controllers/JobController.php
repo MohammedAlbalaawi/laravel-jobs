@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Job::class, 'model');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,7 @@ class JobController extends Controller
      */
     public function index()
     {
-        //
+        return view('jobs.index');
     }
 
     /**
@@ -44,7 +48,7 @@ class JobController extends Controller
      * @param  \App\Models\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function show(Job $job)
+    public function show(Job $model)
     {
         //
     }
@@ -55,7 +59,7 @@ class JobController extends Controller
      * @param  \App\Models\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function edit(Job $job)
+    public function edit(Job $model)
     {
         //
     }
@@ -67,7 +71,7 @@ class JobController extends Controller
      * @param  \App\Models\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Job $job)
+    public function update(Request $request, Job $model)
     {
         //
     }
@@ -78,7 +82,7 @@ class JobController extends Controller
      * @param  \App\Models\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Job $job)
+    public function destroy(Job $model)
     {
         //
     }

@@ -25,9 +25,6 @@
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="/" class="nav-link">Home</a>
             </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="/" class="nav-link">Contact</a>
-            </li>
         </ul>
 
         <!-- Right navbar links -->
@@ -139,11 +136,13 @@
                     <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                 </div>
             </li>
+            <!-- Full Screen Menu -->
             <li class="nav-item">
                 <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                     <i class="fas fa-expand-arrows-alt"></i>
                 </a>
             </li>
+            <!-- Slide Menu -->
             <li class="nav-item">
                 <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
                     <i class="fas fa-th-large"></i>
@@ -190,11 +189,11 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                    <li class="nav-item menu-open">
-                        <a href="#" class="nav-link active">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <li class="nav-item">
+                        <a href="" class="nav-link active">
+                            <i class="nav-icon fas fa-user"></i>
                             <p>
-                                Starter Pages
+                                Users
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -202,27 +201,42 @@
                             <li class="nav-item">
                                 <a href="#" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Active Page</p>
+                                    <p>View All</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="#" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Inactive Page</p>
+                                    <p>Create New User</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
+                        <a href="" class="nav-link active">
+                            <i class="nav-icon fas fa-sticky-note"></i>
                             <p>
-                                Simple Link
-                                <span class="right badge badge-danger">New</span>
+                                Jobs
+                                <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('jobs.index')}}" class="nav-link active">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>View All</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link active">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Create New Job</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
+
             </nav>
             <!-- /.sidebar-menu -->
         </div>
@@ -231,30 +245,13 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">Starter Page</h1>
-                    </div><!-- /.col -->
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/">Home</a></li>
-                            <li class="breadcrumb-item active">Starter Page</li>
-                        </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </div>
-        <!-- /.content-header -->
 
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
-
-                <!-- /.row -->
-            </div><!-- /.container-fluid -->
+                @yield('content')
+            </div>
+            <!-- /.container-fluid -->
         </div>
         <!-- /.content -->
     </div>
@@ -264,8 +261,8 @@
     <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->
         <div class="p-3">
-            <h5>Title</h5>
-            <a class="btn btn-secondary" href="{{route('login.logout')}}">Logout</a>
+            <h5 class="text-center">Quick Actions</h5>
+            <a class="btn btn-secondary d-block mt-3" href="{{route('login.logout')}}">Logout</a>
         </div>
     </aside>
     <!-- /.control-sidebar -->

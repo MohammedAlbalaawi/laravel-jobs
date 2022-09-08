@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\LogingController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,6 @@ Route::controller(LogingController::class)->group(function () {
     Route::get('forgetPassword', 'forgetPassword')->name('login.forgetPassword');
     Route::post('forgetPassword', 'forgetPasswordSend')->name('login.forgetPassword.send');
 });
+
+Route::resource('jobs', JobController::class)
+    ->parameters(['jobs' => 'model']);
