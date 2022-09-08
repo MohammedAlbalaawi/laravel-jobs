@@ -22,8 +22,10 @@ Route::get('/dashboard', function () {
     ->middleware('auth');
 
 Route::controller(LogingController::class)->group(function () {
-    Route::get('/','index')->name('login.index');
-    Route::post('check','check')->name('login.check');
-    Route::get('logout','logout')->name('login.logout');
-});
+    Route::get('/', 'index')->name('login.index');
+    Route::post('check', 'check')->name('login.check');
+    Route::get('logout', 'logout')->name('login.logout');
 
+    Route::get('forgetPassword', 'forgetPassword')->name('login.forgetPassword');
+    Route::post('forgetPassword', 'forgetPasswordSend')->name('login.forgetPassword.send');
+});
