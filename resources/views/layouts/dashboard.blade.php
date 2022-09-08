@@ -186,57 +186,13 @@
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <!-- Add icons to the links using the .nav-icon class
-                         with font-awesome or any other icon font library -->
-                    <li class="nav-item">
-                        <a href="" class="nav-link active">
-                            <i class="nav-icon fas fa-user"></i>
-                            <p>
-                                Users
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>View All</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Create New User</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link active">
-                            <i class="nav-icon fas fa-sticky-note"></i>
-                            <p>
-                                Jobs
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('jobs.index')}}" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>View All</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Create New Job</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
 
+                            <div class="col bg-primary p-3 rounded">
+                                <a href="{{route('jobs.index')}}" class=" d-block">
+                                    <i class="far fa-sticky-note nav-icon"></i>
+                                    <span>Jobs</span>
+                                </a>
+                            </div>
             </nav>
             <!-- /.sidebar-menu -->
         </div>
@@ -244,16 +200,10 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+    <div class="content-wrapper p-2">
 
-        <!-- Main content -->
-        <div class="content">
-            <div class="container-fluid">
                 @yield('content')
-            </div>
-            <!-- /.container-fluid -->
-        </div>
-        <!-- /.content -->
+
     </div>
     <!-- /.content-wrapper -->
 

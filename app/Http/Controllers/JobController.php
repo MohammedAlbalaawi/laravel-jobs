@@ -18,7 +18,9 @@ class JobController extends Controller
      */
     public function index()
     {
-        return view('jobs.index');
+        $allJobs = Job::orderBy('id', 'desc')->paginate(4);
+        $flashMessage = session('success');
+        return view('jobs.index',compact('allJobs','flashMessage'));
     }
 
     /**
@@ -28,7 +30,7 @@ class JobController extends Controller
      */
     public function create()
     {
-        //
+        return view('jobs.create');
     }
 
     /**
@@ -39,7 +41,12 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['user_id'] = $request->user()->id;
+        Job::create($data);
+        return redirect()
+            ->route('jobs.index')
+            ->with('success', 'Job Added SUCCESSFULLY');
     }
 
     /**
@@ -50,7 +57,8 @@ class JobController extends Controller
      */
     public function show(Job $model)
     {
-        //
+        $job = $model;
+        return view('jobs.show',compact('job'));
     }
 
     /**
