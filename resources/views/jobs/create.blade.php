@@ -8,6 +8,17 @@
     <div class="card text-dark bg-light col-8">
         <div class="card-header text-bold text-center text-light bg-dark">New Job</div>
         <div class="card-body">
+
+                @if ($errors->any())
+                    <div class="text-red">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
             <div class="input-group mb-3">
                 <span class="input-group-text" style="width:15%;">Title</span>
                 <input type="text" class="form-control text-center" name="name">

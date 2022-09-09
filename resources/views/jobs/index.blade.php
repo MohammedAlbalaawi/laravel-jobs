@@ -13,15 +13,15 @@
     <table class="table table-striped text-center" >
         <thead class="table-dark ">
         <tr>
-            <th scope="col ">Title</th>
-            <th scope="col">Description</th>
-            <th scope="col">City</th>
-            <th scope="col">JobType</th>
-            <th scope="col">Salary</th>
-            <th scope="col">Degree</th>
-            <th scope="col">Exp.(years)</th>
-            <th scope="col">Deadline</th>
-            <th scope="col"></th>
+            <th >Title</th>
+            <th >Description</th>
+            <th >City</th>
+            <th >JobType</th>
+            <th >Salary</th>
+            <th >Degree</th>
+            <th >Exp.(years)</th>
+            <th >Deadline</th>
+            <th ></th>
         </tr>
         </thead>
         <tbody>

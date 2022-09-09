@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\JobRequest;
 use App\Models\Job;
 use Illuminate\Http\Request;
 
@@ -39,11 +40,12 @@ class JobController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(JobRequest $request)
     {
         $data = $request->all();
         $data['user_id'] = $request->user()->id;
         Job::create($data);
+
         return redirect()
             ->route('jobs.index')
             ->with('success', 'Job Added SUCCESSFULLY');
