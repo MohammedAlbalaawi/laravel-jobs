@@ -32,4 +32,5 @@ Route::controller(LogingController::class)->group(function () {
 });
 
 Route::resource('jobs', JobController::class)
-    ->parameters(['jobs' => 'model']);
+    ->parameters(['jobs' => 'model'])
+    ->middleware('auth');
