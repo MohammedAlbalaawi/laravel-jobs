@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\LogingController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,4 +35,12 @@ Route::controller(LogingController::class)->group(function () {
 
 Route::resource('jobs', JobController::class)
     ->parameters(['jobs' => 'model'])
+    ->middleware('auth');
+
+Route::resource('roles', RoleController::class)
+    ->parameters(['roles' => 'model'])
+    ->middleware('auth'); 
+    
+Route::resource('users', UserController::class)
+    ->parameters(['users' => 'model'])
     ->middleware('auth');

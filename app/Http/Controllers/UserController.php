@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\JobRequest;
-use App\Models\Job;
+use App\Models\Author;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
-class JobController extends Controller
+class UserController extends Controller
 {
-    
     public function __construct()
     {
-        $this->authorizeResource(Job::class, 'model');
+        $this->authorizeResource(User::class, 'model');
     }
     /**
      * Display a listing of the resource.
@@ -20,9 +21,9 @@ class JobController extends Controller
      */
     public function index()
     {
-        $allJobs = Job::orderBy('id', 'desc')->paginate(4);
+        $users = User::all();
         $flashMessage = session('success');
-        return view('jobs.index',compact('allJobs','flashMessage'));
+        return view('users.index',compact('users','flashMessage'));
     }
 
     /**
@@ -32,7 +33,8 @@ class JobController extends Controller
      */
     public function create()
     {
-        return view('jobs.create');
+        $roles = Role::all();
+        return view('users.create',compact('roles'));
     }
 
     /**
@@ -41,36 +43,49 @@ class JobController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(JobRequest $request)
+    public function store(Request $request, User $model)
     {
-        $data = $request->all();
-        $data['user_id'] = $request->user()->id;
-        Job::create($data);
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $user =$model->create(
+            array_merge(
+                $request->all(),
+                ['password' => Hash::make($request->input('password'))]
+            )
+        );
+
+
+        $user->assignRole($request->input('roles'));
+
 
         return redirect()
-            ->route('jobs.index')
-            ->with('success', 'Job Added SUCCESSFULLY');
+            ->route('users.index')
+            ->with('success', 'User Created SUCCESSFULLY');
+    
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Job  $job
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Job $model)
+    public function show($id)
     {
-        $job = $model;
-        return view('jobs.show',compact('job'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Job  $job
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Job $model)
+    public function edit($id)
     {
         //
     }
@@ -79,10 +94,10 @@ class JobController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Job  $job
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Job $model)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -90,10 +105,10 @@ class JobController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Job  $job
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Job $model)
+    public function destroy($id)
     {
         //
     }

@@ -187,7 +187,19 @@
             <!-- Sidebar Menu -->
             <nav class="mt-2">
 
-                            <div class="col bg-primary p-3 rounded">
+                <div class="col bg-primary p-3 rounded mb-1">
+                    <a href="{{route('roles.index')}}" class=" d-block">
+                        <i class="far fa-sticky-note nav-icon"></i>
+                        <span>Roles</span>
+                    </a>
+                </div>
+                <div class="col bg-primary p-3 rounded mb-1">
+                    <a href="{{route('users.index')}}" class=" d-block">
+                        <i class="far fa-sticky-note nav-icon"></i>
+                        <span>Users</span>
+                    </a>
+                </div>
+                            <div class="col bg-primary p-3 rounded mb-1">
                                 <a href="{{route('jobs.index')}}" class=" d-block">
                                     <i class="far fa-sticky-note nav-icon"></i>
                                     <span>Jobs</span>

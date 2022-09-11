@@ -15,24 +15,20 @@
         </div>
     @endif
 </div>
-<form action="{{route('users.store')}}" method="post">
+
+<form action="{{route('roles.store')}}" method="post" >
     @csrf
     <div class="col-6 mx-auto">
         <div class="mb-3">
-            <input type="text" class="form-control" name="name" placeholder="Enter Name">
+            <input type="text" class="form-control" name="name" placeholder="Enter Role Name">
         </div>
-        <div class="mb-3">
-            <input type="text" class="form-control" name="email" placeholder="Enter email">
-        </div>
-        <div class="mb-3">
-            <input type="text" class="form-control" name="password" placeholder="Enter password">
-        </div>
+
         <div class="mb-3" style="background-color:#f2f2f2; padding-left: 10px; border-radius: 5px;">
-            <label class="form-label">Roles</label>
-            @foreach($roles as $role)
+            <label class="form-label">Permissions</label>
+            @foreach($permissions as $permission)
                 <div>
-                    <input type="checkbox" name="roles[]" value="{{$role->id}}"  >
-                    <label>{{$role->name}}</label>
+                    <input type="checkbox" name="permission[]" value="{{$permission->id}}" >
+                    <label>{{$permission->name}}</label>
                 </div>
             @endforeach
         </div>

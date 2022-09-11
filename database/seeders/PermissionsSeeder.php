@@ -21,7 +21,9 @@ class PermissionsSeeder extends Seeder
 
         // Create Permissions
         $allPermissions = [
-            'orders' => ['viewAny', 'view', 'create', 'update', 'delete'],
+            'jobs' => ['viewAny', 'view', 'create', 'update', 'delete'],
+            'roles' => ['viewAny', 'view', 'create', 'update', 'delete'],
+            'users' => ['viewAny', 'view', 'create', 'update', 'delete'],
         ];
 
         foreach ($allPermissions as $group => $permissions) {
