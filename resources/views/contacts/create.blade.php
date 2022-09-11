@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,23 +16,29 @@
     <link rel="stylesheet" href="{{asset('assets/dashboard/dist/css/adminlte.min.css')}}">
 </head>
 <body class="hold-transition login-page">
-    
 <div class="login-box">
     <div class="login-logo">
-        <a href="/"><b>Jobs</b>Website</a>
+        <a href="/"><b>Contact</b>Us</a>
     </div>
     <!-- /.login-logo -->
-    <div class="card">
+    <div class="card" >
         <div class="card-body login-card-body">
-            <p class="login-box-msg">Sign in to start your session</p>
+            <p class="login-box-msg">We will reply within 24 hrs</p>
 
-            <form action="{{route('login.check')}}" method="post">
+            <form action="{{route('contacts.store')}}" method="post">
                 @csrf
-                @error('email')
-                <span class="text-red">{{ $message }}</span>
-                @enderror
+
                 <div class="input-group mb-3">
-                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email">
+                    <input type="name" name="name" class="form-control " placeholder="Your Name">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="email" name="email" class="form-control " placeholder="Your Email address">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
@@ -39,45 +46,40 @@
                     </div>
                 </div>
 
-                @error('password')
-                <span class="text-red">{{ $message }}</span>
-                @enderror
                 <div class="input-group mb-3">
-                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
+                    <input type="text" name="subject" class="form-control " placeholder="Subject">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
+                            <span class="fas fa-pen"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-8">
-                        <div class="check-primary">
-                            <input type="checkbox" name="remember">
-                            <span>
-                                Remember Me
-                            </span>
-                        </div>
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-                    </div>
-                    <!-- /.col -->
+                <div class="input-group mb-3">
+                    <textarea name="message" class="form-control" rows="3" placeholder="Message"></textarea>
+ 
                 </div>
+
+                    <div class="col">
+                        <div class="row">
+                            <div class="col col-12">
+                        <button type="submit" class="btn btn-primary btn-block">Send</button>
+                        </div>
+                        <div class="col">
+                        <a href="{{ route('login.index') }}" class="btn btn-light mt-2">Login</a>
+                        </div>
+                        </div>
             </form>
 
-            <p class="mb-1">
-                <a href="{{ route('login.forgetPassword') }}">I forgot my password</a><br/>
-                <a href="{{ route('contacts.create') }}" class=" mt-2">Contact Us</a>
-            </p>
         </div>
+        @if(Session::has('success'))
+        <div class="alert alert-success mt-3">
+            {{ Session::get('success') }}
+        </div>
+@endif
         <!-- /.login-card-body -->
     </div>
-    
 </div>
-
 <!-- /.login-box -->
 
 <!-- jQuery -->

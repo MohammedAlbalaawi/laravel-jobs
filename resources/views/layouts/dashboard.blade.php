@@ -199,12 +199,20 @@
                         <span>Users</span>
                     </a>
                 </div>
-                            <div class="col bg-primary p-3 rounded mb-1">
-                                <a href="{{route('jobs.index')}}" class=" d-block">
-                                    <i class="far fa-sticky-note nav-icon"></i>
-                                    <span>Jobs</span>
-                                </a>
-                            </div>
+                <div class="col bg-primary p-3 rounded mb-1">
+                    <a href="{{route('jobs.index')}}" class=" d-block">
+                        <i class="far fa-sticky-note nav-icon"></i>
+                        <span>Jobs</span>
+                    </a>
+                </div>
+
+                <div class="col bg-primary p-3 rounded mb-1">
+                    <a href="{{route('contacts.index')}}" class=" d-block">
+                        <i class="far fa-sticky-note nav-icon"></i>
+                        <span>Messages</span>
+                    </a>
+                </div>
+                           
             </nav>
             <!-- /.sidebar-menu -->
         </div>
