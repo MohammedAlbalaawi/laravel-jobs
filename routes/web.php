@@ -4,6 +4,7 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\LogingController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,3 +45,7 @@ Route::resource('roles', RoleController::class)
 Route::resource('users', UserController::class)
     ->parameters(['users' => 'model'])
     ->middleware('auth');
+
+Route::resource('contacts', ContactController::class)
+    ->parameters(['contacts' => 'model']);
+
