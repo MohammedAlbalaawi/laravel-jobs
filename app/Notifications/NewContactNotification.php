@@ -43,11 +43,16 @@ class NewContactNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-                ->greeting('Hello, ' . $notifiable->name)
-                ->line('This is a test message')
-                ->action('Show in dashboard', route('contacts.index'))
-                ->line('Thank you');
+        // return (new MailMessage)
+        //         ->greeting('Hello, ' . $notifiable->name)
+        //         ->line('This is a test message')
+        //         ->action('Show in dashboard', route('contacts.index'))
+        //         ->line('Thank you');
+
+        return (new MailMessage)->view('mails.template',[
+            'messageDetails' => $this->contact,
+            'recieverDetails' => $notifiable,
+        ]);
     }
 
     /**
