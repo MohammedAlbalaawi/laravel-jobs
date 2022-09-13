@@ -39,7 +39,7 @@ class ContactController extends Controller
      */
     public function store(Request $request, Contact $model)
     {
-        $model->create($request->all());
+        $model = $model->create($request->all());
 
         $flashMessage = session('success');
 
