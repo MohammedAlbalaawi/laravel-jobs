@@ -32,7 +32,7 @@ class NewContactNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail','database'];
     }
 
     /**
@@ -53,6 +53,17 @@ class NewContactNotification extends Notification
             'messageDetails' => $this->contact,
             'recieverDetails' => $notifiable,
         ]);
+    }
+
+    public function toDatabase($notifiable){
+        
+           $body = sprintf('%s send new message', $this->contact->name);
+        return [
+            'title' =>'New message',
+            'body' =>$body,
+            'icon' =>'icon-material-outline-group',
+            'url' =>route('contacts.index'),
+        ];
     }
 
     /**
