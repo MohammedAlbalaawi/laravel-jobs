@@ -25,7 +25,7 @@
         <div class="card-body login-card-body">
             <p class="login-box-msg">We will reply within 24 hrs</p>
 
-            <form action="{{route('contacts.store')}}" method="post">
+            <form action="{{route('site-contacts.store')}}" method="post">
                 @csrf
 
                 <div class="input-group mb-3">

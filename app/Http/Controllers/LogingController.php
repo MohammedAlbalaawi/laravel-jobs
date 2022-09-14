@@ -13,7 +13,7 @@ class LogingController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            return redirect()->route('dashboard');
+            return redirect()->route('jobs.index');
         }
         return view('security/login');
     }
@@ -24,7 +24,7 @@ class LogingController extends Controller
             ['email' => $request->email, 'password' => $request->password],
             $request->has('remember') ? true : false))
         {
-            return redirect()->route('dashboard');
+            return redirect()->route('jobs.index');
         }
         return redirect()->route('login.index');
     }

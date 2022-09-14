@@ -5,6 +5,7 @@ use App\Http\Controllers\LogingController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Site\ContactController as SiteContactController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,10 +21,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
-Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->name('dashboard')
-    ->middleware('auth');
+Route::get('notification', function (){
+    return redirect()->route('login.index');
+});
 
 Route::controller(LogingController::class)->group(function () {
     Route::get('/', 'index')->name('login.index');
@@ -47,5 +47,10 @@ Route::resource('users', UserController::class)
     ->middleware('auth');
 
 Route::resource('contacts', ContactController::class)
-    ->parameters(['contacts' => 'model']);
+    ->parameters(['contacts' => 'model'])
+    ->only('index')
+    ->middleware('auth');
 
+Route::resource('site-contacts', SiteContactController::class)
+    ->parameters(['site-contacts' => 'model'])
+    ->only('create' ,'store');
