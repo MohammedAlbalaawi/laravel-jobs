@@ -48,7 +48,7 @@ class NewContactNotification extends Notification
         //         ->action('Show in dashboard', route('contacts.index'))
         //         ->line('Thank you');
 
-        return (new MailMessage)->view('mails.template', [
+        return (new MailMessage())->view('mails.template', [
             'messageDetails' => $this->contact,
             'recieverDetails' => $notifiable,
         ]);
