@@ -8,7 +8,6 @@ class JobRequest extends FormRequest
 {
     protected $stopOnFirstFailure = true; // stop on first failure
 
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -27,14 +26,14 @@ class JobRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'  => 'required',
-            'description'  => 'required',
-            'city'  => 'required',
-            'job_type'  => 'required',
-            'salary'  => 'required',
-            'degree'  => 'required',
-            'experience'  => 'required',
-            'deadline'  => 'required',
+            'name' => 'required',
+            'description' => 'required',
+            'city' => 'required',
+            'job_type' => 'required',
+            'salary' => 'required',
+            'degree' => 'required',
+            'experience' => 'required',
+            'deadline' => 'required',
         ];
     }
 

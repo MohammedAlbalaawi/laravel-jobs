@@ -2,11 +2,10 @@
 
 namespace App\Notifications;
 
+use App\Models\Contact;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use App\Models\Contact;
 
 class NewContactNotification extends Notification
 {
@@ -32,7 +31,7 @@ class NewContactNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail','database'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -49,20 +48,21 @@ class NewContactNotification extends Notification
         //         ->action('Show in dashboard', route('contacts.index'))
         //         ->line('Thank you');
 
-        return (new MailMessage)->view('mails.template',[
+        return (new MailMessage)->view('mails.template', [
             'messageDetails' => $this->contact,
             'recieverDetails' => $notifiable,
         ]);
     }
 
-    public function toDatabase($notifiable){
-        
-           $body = sprintf('%s send new message', $this->contact->name);
+    public function toDatabase($notifiable)
+    {
+        $body = sprintf('%s send new message', $this->contact->name);
+
         return [
-            'title' =>'New message',
-            'body' =>$body,
-            'icon' =>'icon-material-outline-group',
-            'url' =>route('contacts.index'),
+            'title' => 'New message',
+            'body' => $body,
+            'icon' => 'icon-material-outline-group',
+            'url' => route('contacts.index'),
         ];
     }
 

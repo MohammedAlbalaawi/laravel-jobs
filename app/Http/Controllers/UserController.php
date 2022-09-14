@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Author;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -14,6 +13,7 @@ class UserController extends Controller
     {
         $this->authorizeResource(User::class, 'model');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +23,8 @@ class UserController extends Controller
     {
         $users = User::all();
         $flashMessage = session('success');
-        return view('users.index',compact('users','flashMessage'));
+
+        return view('users.index', compact('users', 'flashMessage'));
     }
 
     /**
@@ -34,7 +35,8 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::all();
-        return view('users.create',compact('roles'));
+
+        return view('users.create', compact('roles'));
     }
 
     /**
@@ -51,21 +53,18 @@ class UserController extends Controller
             'password' => 'required',
         ]);
 
-        $user =$model->create(
+        $user = $model->create(
             array_merge(
                 $request->all(),
                 ['password' => Hash::make($request->input('password'))]
             )
         );
 
-
         $user->assignRole($request->input('roles'));
-
 
         return redirect()
             ->route('users.index')
             ->with('success', 'User Created SUCCESSFULLY');
-    
     }
 
     /**

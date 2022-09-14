@@ -3,10 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
-use App\Models\User;
-use App\Notifications\NewContactNotification;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Notification;
 
 class ContactController extends Controller
 {
@@ -19,8 +15,6 @@ class ContactController extends Controller
     {
         $allMessages = Contact::orderBy('id', 'desc')->paginate(4);
 
-        return view('contacts.index',compact('allMessages'));
+        return view('contacts.index', compact('allMessages'));
     }
-
-    
 }

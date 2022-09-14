@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Models\Contact;
-use App\Models\User;
-use App\Notifications\NewContactNotification;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Notification;
+use App\Events\SendMailProcessed;
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
+use Illuminate\Http\Request;
 
 class ContactController extends Controller
-{ 
+{
     /**
      * Show the form for creating a new resource.
      *
@@ -30,20 +28,8 @@ class ContactController extends Controller
     public function store(Request $request, Contact $model)
     {
         $model = $model->create($request->all());
-
-        $flashMessage = session('success');
-
-        $adminUsers = User::whereHas('roles' , function ($q) {
-            return $q->where('name','=','admin');
-        })->get();
-
- 
-        Notification::send($adminUsers , new NewContactNotification($model));
-
+        event(new SendMailProcessed($model));
 
         return back()->with('success', 'Thank you, Your Message was SUCCESSFULLY Sent');
-
     }
-
-   
 }

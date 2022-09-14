@@ -22,9 +22,9 @@ class JobFactory extends Factory
             'description' => fake()->text($maxNbChars = 50),
             'city' => fake()->city,
             'job_type' => 'Full Time',
-            'salary' => fake()->numberBetween(300,1000),
+            'salary' => fake()->numberBetween(300, 1000),
             'degree' => 'BA',
-            'experience' => fake()->numberBetween(1,5),
+            'experience' => fake()->numberBetween(1, 5),
             'deadline' => fake()->date('Y-m-d'),
         ];
     }

@@ -1,12 +1,11 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\LogingController;
 use App\Http\Controllers\RoleController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Site\ContactController as SiteContactController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,8 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('notification', function (){
+Route::get('notification', function () {
     return redirect()->route('login.index');
 });
 
@@ -40,8 +38,8 @@ Route::resource('jobs', JobController::class)
 
 Route::resource('roles', RoleController::class)
     ->parameters(['roles' => 'model'])
-    ->middleware('auth'); 
-    
+    ->middleware('auth');
+
 Route::resource('users', UserController::class)
     ->parameters(['users' => 'model'])
     ->middleware('auth');
@@ -53,4 +51,4 @@ Route::resource('contacts', ContactController::class)
 
 Route::resource('site-contacts', SiteContactController::class)
     ->parameters(['site-contacts' => 'model'])
-    ->only('create' ,'store');
+    ->only('create', 'store');

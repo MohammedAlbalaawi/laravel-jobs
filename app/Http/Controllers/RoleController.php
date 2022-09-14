@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Role;
+use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
-
     public function __construct()
     {
         $this->authorizeResource(Role::class, 'model');
@@ -23,7 +22,8 @@ class RoleController extends Controller
     {
         $roles = Role::all();
         $flashMessage = session('success');
-        return view('roles.index',compact('roles','flashMessage'));
+
+        return view('roles.index', compact('roles', 'flashMessage'));
     }
 
     /**
@@ -34,7 +34,8 @@ class RoleController extends Controller
     public function create()
     {
         $permissions = Permission::all();
-        return view('roles.create',compact('permissions'));
+
+        return view('roles.create', compact('permissions'));
     }
 
     /**
@@ -52,9 +53,8 @@ class RoleController extends Controller
         $role = $model->updateOrCreate([
             'name' => $request->input('name'),
         ]);
-        
-        $role->givePermissionTo($request->input('permission'));
 
+        $role->givePermissionTo($request->input('permission'));
 
         return redirect()
             ->route('roles.index')
