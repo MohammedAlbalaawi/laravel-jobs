@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
-    
     public function __construct()
     {
         $this->authorizeResource(Job::class, 'model');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +22,8 @@ class JobController extends Controller
     {
         $allJobs = Job::orderBy('id', 'desc')->paginate(4);
         $flashMessage = session('success');
-        return view('jobs.index',compact('allJobs','flashMessage'));
+
+        return view('jobs.index', compact('allJobs', 'flashMessage'));
     }
 
     /**
@@ -61,7 +62,8 @@ class JobController extends Controller
     public function show(Job $model)
     {
         $job = $model;
-        return view('jobs.show',compact('job'));
+
+        return view('jobs.show', compact('job'));
     }
 
     /**

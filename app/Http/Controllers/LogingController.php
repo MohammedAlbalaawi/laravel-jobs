@@ -13,8 +13,9 @@ class LogingController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            return redirect()->route('dashboard');
+            return redirect()->route('jobs.index');
         }
+
         return view('security/login');
     }
 
@@ -22,26 +23,28 @@ class LogingController extends Controller
     {
         if (Auth::attempt(
             ['email' => $request->email, 'password' => $request->password],
-            $request->has('remember') ? true : false))
-        {
-            return redirect()->route('dashboard');
+            $request->has('remember') ? true : false)) {
+            return redirect()->route('jobs.index');
         }
+
         return redirect()->route('login.index');
     }
 
     public function logout()
     {
         Auth::logout();
+
         return redirect()->route('login.index');
     }
 
     // Forget Password Methods
-    public function forgetPassword(){
+    public function forgetPassword()
+    {
         return view('security/forgetPassword');
     }
 
-    public function forgetPasswordSend(Request $request){
-
+    public function forgetPasswordSend(Request $request)
+    {
 //        $request->validate(['email' => 'required|email']);
 //
 //        $status = Password::sendResetLink(
@@ -53,6 +56,5 @@ class LogingController extends Controller
 //            : back()->withErrors(['email' => __($status)]);
 
         return redirect()->route('login.index');
-
     }
 }

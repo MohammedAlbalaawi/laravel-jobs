@@ -70,7 +70,7 @@
 
             <p class="mb-1">
                 <a href="{{ route('login.forgetPassword') }}">I forgot my password</a><br/>
-                <a href="{{ route('contacts.create') }}" class=" mt-2">Contact Us</a>
+                <a href="{{ route('site-contacts.create') }}" class=" mt-2">Contact Us</a>
             </p>
         </div>
         <!-- /.login-card-body -->

@@ -8,7 +8,8 @@ use Illuminate\Notifications\Notifiable;
 
 class Contact extends Model
 {
-    use HasFactory,Notifiable;
+    use HasFactory;
+    use Notifiable;
 
     protected $fillable = [
         'name',

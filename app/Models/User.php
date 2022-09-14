@@ -3,21 +3,23 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-
 // implements Contract - but in this class it's already exists in Authentication
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Illuminate\Auth\Passwords\CanResetPassword;
+use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
 // trait
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, CanResetPassword, HasRoles;
+    use HasApiTokens;
+    use HasFactory;
+    use Notifiable;
+    use CanResetPassword;
+    use HasRoleuses;
 
     /**
      * The attributes that are mass assignable.
@@ -49,7 +51,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function jobs(){
+    public function jobs()
+    {
         return $this->hasMany(Job::class);
     }
 }
