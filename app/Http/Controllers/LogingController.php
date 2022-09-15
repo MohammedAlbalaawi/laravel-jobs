@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Password;
 
 class LogingController extends Controller
 {
+    /**
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     // Login Methods
     public function index()
     {
@@ -19,6 +22,9 @@ class LogingController extends Controller
         return view('security/login');
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function check(LoginRequest $request)
     {
         if (
@@ -35,6 +41,9 @@ class LogingController extends Controller
         return redirect()->route('login.index');
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function logout()
     {
         Auth::logout();
@@ -42,12 +51,18 @@ class LogingController extends Controller
         return redirect()->route('login.index');
     }
 
+    /**
+     * @return \Illuminate\View\View
+     */
     // Forget Password Methods
     public function forgetPassword()
     {
         return view('security/forgetPassword');
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function forgetPasswordSend(Request $request)
     {
 //        $request->validate(['email' => 'required|email']);

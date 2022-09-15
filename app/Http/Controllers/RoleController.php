@@ -54,7 +54,7 @@ class RoleController extends Controller
             'name' => $request->input('name'),
         ]);
 
-        $role->givePermissionTo($request->input('permission'));
+        $role->givePermissionTo(strval($request->input('permission')));
 
         return redirect()
             ->route('roles.index')

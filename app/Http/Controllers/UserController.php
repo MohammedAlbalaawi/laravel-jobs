@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use PHPStan\Type\MixedType;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -38,9 +39,8 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
+     * @param User $model
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request, User $model)
@@ -51,14 +51,15 @@ class UserController extends Controller
             'password' => 'required',
         ]);
 
+
         $user = $model->create(
             array_merge(
                 $request->all(),
-                ['password' => Hash::make($request->input('password'))]
+                ['password' => Hash::make(strval($request->input('password')))]
             )
         );
 
-        $user->assignRole($request->input('roles'));
+        $user->assignRole(strval($request->input('roles')));
 
         return redirect()
             ->route('users.index')

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\JobRequest;
 use App\Models\Job;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
@@ -43,9 +45,18 @@ class JobController extends Controller
      */
     public function store(JobRequest $request)
     {
+
+        /**
+         * @var User $user
+         */
+        $user = Auth::user();
+        $id = $user->id;
+
         $data = $request->all();
-        $data['user_id'] = $request->user()->id;
+        $data['user_id'] = $id;
         Job::create($data);
+
+
 
         return redirect()
             ->route('jobs.index')

@@ -11,8 +11,7 @@ class NewContactNotification extends Notification
 {
     use Queueable;
 
-    protected $contact;
-
+    protected Contact $contact;
     /**
      * Create a new notification instance.
      *
@@ -27,7 +26,7 @@ class NewContactNotification extends Notification
      * Get the notification's delivery channels.
      *
      * @param  mixed  $notifiable
-     * @return array
+     * @return array<string>
      */
     public function via($notifiable)
     {
@@ -58,7 +57,7 @@ class NewContactNotification extends Notification
      * Get the array representation of the notification.
      *
      * @param  mixed  $notifiable
-     * @return array
+     * @return array<void> array
      */
     public function toArray($notifiable)
     {
