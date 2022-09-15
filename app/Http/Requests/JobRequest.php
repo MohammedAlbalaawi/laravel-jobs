@@ -21,7 +21,7 @@ class JobRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string  => 'required', mixed>
+     * @return array => 'required', mixed>
      */
     public function rules()
     {
