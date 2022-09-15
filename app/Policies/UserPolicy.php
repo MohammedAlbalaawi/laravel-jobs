@@ -66,6 +66,4 @@ class UserPolicy
     {
         return  $user->can('delete user');
     }
-
-
 }

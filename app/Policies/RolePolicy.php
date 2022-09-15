@@ -67,13 +67,4 @@ class RolePolicy
     {
         return  $user->can('delete role');
     }
-
-    /**
-     * Determine whether the user can restore the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Role  $role
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-
 }

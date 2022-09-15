@@ -67,13 +67,4 @@ class JobPolicy
     {
         return  $user->can('delete job');
     }
-
-    /**
-     * Determine whether the user can restore the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Job  $job
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-
 }

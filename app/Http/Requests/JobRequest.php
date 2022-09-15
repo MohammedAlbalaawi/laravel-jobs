@@ -7,7 +7,6 @@ use Illuminate\Foundation\Http\FormRequest;
 class JobRequest extends FormRequest
 {
     protected $stopOnFirstFailure = true; // stop on first failure
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -17,6 +16,8 @@ class JobRequest extends FormRequest
     {
         return true;
     }
+
+
 
     /**
      * Get the validation rules that apply to the request.
