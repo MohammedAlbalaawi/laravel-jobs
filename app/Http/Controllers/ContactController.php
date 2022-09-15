@@ -33,10 +33,9 @@ class ContactController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Contact  $model
+     * @param Request $request
+     * @param Contact $model
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request, Contact $model)
     {
@@ -50,5 +49,4 @@ class ContactController extends Controller
 
         return back()->with('success', 'Thank you, Your Message was SUCCESSFULLY Sent');
     }
-
 }
