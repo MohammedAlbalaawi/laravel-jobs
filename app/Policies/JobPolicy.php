@@ -11,10 +11,8 @@ class JobPolicy
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view any models.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
+     * @param User $user
+     * @return bool
      */
     public function viewAny(User $user)
     {
@@ -22,11 +20,9 @@ class JobPolicy
     }
 
     /**
-     * Determine whether the user can view the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Job  $job
-     * @return \Illuminate\Auth\Access\Response|bool
+     * @param User $user
+     * @param Job $job
+     * @return bool
      */
     public function view(User $user, Job $job)
     {
@@ -34,10 +30,8 @@ class JobPolicy
     }
 
     /**
-     * Determine whether the user can create models.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
+     * @param User $user
+     * @return bool
      */
     public function create(User $user)
     {
@@ -45,11 +39,9 @@ class JobPolicy
     }
 
     /**
-     * Determine whether the user can update the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Job  $job
-     * @return \Illuminate\Auth\Access\Response|bool
+     * @param User $user
+     * @param Job $job
+     * @return bool
      */
     public function update(User $user, Job $job)
     {
@@ -57,23 +49,12 @@ class JobPolicy
     }
 
     /**
-     * Determine whether the user can delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Job  $job
-     * @return \Illuminate\Auth\Access\Response|bool
+     * @param User $user
+     * @param Job $job
+     * @return bool
      */
     public function delete(User $user, Job $job)
     {
         return  $user->can('delete job');
     }
-
-    /**
-     * Determine whether the user can restore the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Job  $job
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-
 }
