@@ -33,8 +33,8 @@ class ContactController extends Controller
     }
 
     /**
-     * @param Request $request
-     * @param Contact $model
+     * @param  Request  $request
+     * @param  Contact  $model
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request, Contact $model)

@@ -10,7 +10,7 @@ class UserPolicy
     use HandlesAuthorization;
 
     /**
-     * @param User $user
+     * @param  User  $user
      * @return bool
      */
     public function viewAny(User $user)
@@ -19,8 +19,8 @@ class UserPolicy
     }
 
     /**
-     * @param User $user
-     * @param User $model
+     * @param  User  $user
+     * @param  User  $model
      * @return bool
      */
     public function view(User $user, User $model)
@@ -29,7 +29,7 @@ class UserPolicy
     }
 
     /**
-     * @param User $user
+     * @param  User  $user
      * @return bool
      */
     public function create(User $user)
@@ -38,8 +38,8 @@ class UserPolicy
     }
 
     /**
-     * @param User $user
-     * @param User $model
+     * @param  User  $user
+     * @param  User  $model
      * @return bool
      */
     public function update(User $user, User $model)
@@ -48,8 +48,8 @@ class UserPolicy
     }
 
     /**
-     * @param User $user
-     * @param User $model
+     * @param  User  $user
+     * @param  User  $model
      * @return bool
      */
     public function delete(User $user, User $model)
