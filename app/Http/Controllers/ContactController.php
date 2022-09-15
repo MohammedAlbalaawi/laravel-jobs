@@ -18,7 +18,8 @@ class ContactController extends Controller
     public function index()
     {
         $allMessages = Contact::orderBy('id', 'desc')->paginate(4);
-        return view('contacts.index',compact('allMessages'));
+
+        return view('contacts.index', compact('allMessages'));
     }
 
     /**
@@ -43,16 +44,13 @@ class ContactController extends Controller
 
         $flashMessage = session('success');
 
-        $adminUsers = User::whereHas('roles' , function ($q) {
-            return $q->where('name','=','admin');
+        $adminUsers = User::whereHas('roles', function ($q) {
+            return $q->where('name', '=', 'admin');
         })->get();
 
- 
-        Notification::send($adminUsers , new NewContactNotification($model));
-
+        Notification::send($adminUsers, new NewContactNotification($model));
 
         return back()->with('success', 'Thank you, Your Message was SUCCESSFULLY Sent');
-
     }
 
     /**

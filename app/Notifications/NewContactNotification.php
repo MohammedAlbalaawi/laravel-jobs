@@ -2,11 +2,10 @@
 
 namespace App\Notifications;
 
+use App\Models\Contact;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use App\Models\Contact;
 
 class NewContactNotification extends Notification
 {
@@ -49,7 +48,7 @@ class NewContactNotification extends Notification
         //         ->action('Show in dashboard', route('contacts.index'))
         //         ->line('Thank you');
 
-        return (new MailMessage)->view('mails.template',[
+        return (new MailMessage())->view('mails.template', [
             'messageDetails' => $this->contact,
             'recieverDetails' => $notifiable,
         ]);
